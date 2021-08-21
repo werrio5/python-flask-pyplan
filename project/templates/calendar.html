@@ -10,10 +10,22 @@
 </h2>
 
 <table class="calendar">
-    {% for row in range(0, data |length // 7 + 1) %}
+  <tr>
+    {% for row in range(0, 7) %}
+    <th>
+      {{data[row][1]}}
+    </th>
+    {% endfor %}
+  </tr>
+  
+    {% for row in range(0, data |length // 7) %}
     <tr>
         {% for column in range(0,7) %}
-        <td> {{ data[row * 7 + column] }}</td>
+        <td>
+          <div  class = {{'day' if not data[row * 7 + column][0] == 0}}>
+            {{ data[row * 7 + column] }}
+          </div> 
+        </td>
         {% endfor %}
     </tr>   
   {% endfor %}
